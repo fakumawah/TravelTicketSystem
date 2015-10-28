@@ -53,6 +53,7 @@ public class CustomerController {
     public String saveCustomerPage(Model model) {
         logger.info("Returning to custSave.jsp page");
         model.addAttribute("customer", new Customer());
+        String r="";
         return "custSave";
     }
  

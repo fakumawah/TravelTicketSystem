@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>${title}</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/errors.css" />
+<!--     <script src="js/jquery-2.0.2.min.js"></script> -->
+</head>
+
+<body>
+
+<!-- TOP CONTAINER -->
+<div id="topcontainer">
+	<div id="topleft"></div>
+	<div id="topmiddle"></div>
+	<div id="topright" class="center">
+		
+	</div>
+</div>
+
+<!-- MAIN-CONTAINER -->
+<div id="maincontainer">
+
+	<div id="headcontainer">
+		
+	</div>
+	<div id="menucontainer">
+		<a class="link-menu" href="#">home</a> | 
+		<a class="link-menu" href="#">Comics</a>
+		<sec:authorize ifAnyGranted="ROLE_ADMIN,ROLE_USER">
+		 | 
+			<a class="link-menu" href="#">MyComics</a> | 
+			<a class="link-menu" href="#">Cart</a> | 
+			<a class="link-menu" href="#">MyAccount</a>
+		</sec:authorize>
+	<div id="toplogincontainer">
+			<sec:authorize ifAnyGranted="ROLE_ADMIN,ROLE_USER">
+				 <c:out value="${sessionScope.userSessionBean.username}">[ unknown user ]</c:out>
+				 <img src='getImage/${sessionScope.userSessionBean.id}' height='15' border='0' />
+				 <a href="logout">Logout</a>
+			</sec:authorize>
+			
+			<sec:authorize ifNotGranted="ROLE_ADMIN,ROLE_USER">
+				<a href="login.html">Login</a>
+				<img src="images/login_icon.jpg" height="15" border="0" />
+			</sec:authorize>
+	</div>
+	</div>
+
+	
+	<div id="bodycontainer">
